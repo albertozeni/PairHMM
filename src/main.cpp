@@ -24,13 +24,13 @@ int main (const int argc, char const * const argv[]) {
     _MM_SET_DENORMALS_ZERO_MODE(_MM_DENORMALS_ZERO_ON);
 #endif
   auto pairhmm = Pairhmm<
-    //PairhmmScalarImpl<float>,
-    //PairhmmScalarImpl<double>
+    PairhmmScalarImpl<float>,
+    PairhmmScalarImpl<double>
     //PairhmmSSEFloatImpl,
     //PairhmmAVXFloatImpl,
     //PairhmmAVXDoubleImpl
-    PairhmmAVXFloat2DiagsImpl,
-    PairhmmAVXDouble2DiagsImpl
+    // PairhmmAVXFloat2DiagsImpl,
+    // PairhmmAVXDouble2DiagsImpl
   >{};
   InputReader<TestcaseIterator> reader {};
   if (argc == 2)
