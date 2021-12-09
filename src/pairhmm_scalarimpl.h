@@ -33,8 +33,6 @@ protected:
     const auto fd = mrl - rl;                   // first diagonal to compute (saves compute of all-0 diagonals when read is shorter than the padding - which will be the maximum read length in the testcase)
     auto result = 0.l;                          // result accumulator
     auto &diags = this->m_diagonals;
-    auto diag_size = 2;
-    auto diag_no = 1;
     auto max_len = hl > rl ? hl : rl;
     auto min_len = hl < rl ? hl : rl;
     auto &consts = this->m_constants;
@@ -55,11 +53,6 @@ protected:
           diags.y[r] = 0;
         }
       }
-      diag_no++;
-      if((diag_no<min_len+1))
-        diag_size++;
-      else if(diag_no>max_len+1)
-        diag_size--;
       result += diags.m[rows-1] + diags.x[rows-1];
       diags.rotate();
     }
